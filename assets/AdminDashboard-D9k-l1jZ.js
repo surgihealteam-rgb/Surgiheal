@@ -1,1 +1,0 @@
-import{j as t}from"./services-Cbl_1PAa.js";import{N as o}from"./vendor-C-Dt1pBA.js";import"./ui-CckxT14R.js";const e=()=>t.jsx(o,{to:"/admin-access-controll/consultations",replace:!0});export{e as default};
