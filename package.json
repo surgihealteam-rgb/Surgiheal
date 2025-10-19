@@ -1,9 +1,10 @@
 {
   "name": "surgiheal-webapp",
+  "homepage": "https://surgihealteam-rgb.github.io/Surgiheal",
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "homepage": "https://surgihealteam-rgb.github.io",
+ 
   "scripts": {
     "dev": "vite",
     "build": "vite build",

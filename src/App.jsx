@@ -1,5 +1,5 @@
 import React, { useState, Suspense, lazy } from 'react'
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
+import { HashRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import FloatingButtons from './components/ui/FloatingButtons'
@@ -31,9 +31,6 @@ const AdminLayout = lazy(() => import('./components/admin/AdminLayout'))
 const AdminDashboard = lazy(() => import('./pages/admin/AdminDashboard'))
 const ConsultationsPage = lazy(() => import('./pages/admin/ConsultationsPage'))
 const WhatsappUsersPage = lazy(() => import('./pages/admin/WhatsappUsersPage'))
-
-// Purple: #6e3190
-// Teal: #00b7ab
 
 function AppContent() {
   const navigate = useNavigate();
@@ -245,7 +242,7 @@ function AppContent() {
         } />
       </Route>
       
-      {/* 404 Not Found - Catch all unmatched routes */}
+      {/* 404 Not Found */}
       <Route path="*" element={
         <Suspense fallback={<LoadingSpinner />}>
           <NotFound />
