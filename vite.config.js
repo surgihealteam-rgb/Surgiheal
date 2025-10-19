@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
-  base: "/", // ✅ Always "/" when using a custom domain
+  base: "/Surgiheal/", // ✅ Always "/" when using a custom domain
   plugins: [react()],
   build: {
     rollupOptions: {
