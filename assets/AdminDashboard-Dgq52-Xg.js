@@ -1,1 +1,0 @@
-import{j as s}from"./services-bFq8Mifw.js";import{N as o}from"./vendor-Cc7wcGMw.js";import"./ui-B_cSuroK.js";const r=()=>s.jsx(o,{to:"/admin-access-controll/consultations",replace:!0});export{r as default};

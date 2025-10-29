@@ -1,0 +1,1 @@
+const s="/Surgiheal/assets/Rajsree-B8S2IEhN.jpg",a="/Surgiheal/assets/RajKumar-DxYF4jAV.jpg",e="/Surgiheal/assets/keerthana-BA0ssfYN.jpg",r="/Surgiheal/assets/rajeshUppala-Ft0Hj0S8.jpg",g="/Surgiheal/assets/Nikhileshwar-CeqMngf_.jpeg";export{s as R,a,e as k,g as n,r};
