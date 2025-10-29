@@ -53,7 +53,7 @@ const VideoSection = () => {
 
             <iframe
               className="w-full h-full"
-              src="https://youtu.be/nstyX0Fo2yc"
+              src="https://www.youtube.com/embed/nstyX0Fo2yc"
               title="Healthcare Video"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

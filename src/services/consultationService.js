@@ -1,42 +1,61 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+import { validateFormData } from "../utils/security";
+import { supabase } from "./supabaseClient"; // Make sure this path is correct
 
 export const consultationService = {
   async createConsultation(consultationData) {
     try {
-      const response = await fetch(`${API_BASE_URL}/consultations`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: consultationData.name,
-          email: consultationData.email,
-          mobile: consultationData.phone,
-          city: consultationData.city,
-          disease: consultationData.disease
-        })
-      });
+      // Define required fields
+      const requiredFields = ["name", "phone", "city", "disease", "age"];
 
-      const data = await response.json();
+      // Validate
+      const { errors, validatedData } = validateFormData(
+        consultationData,
+        requiredFields
+      );
 
-      if (!response.ok || !data.success) {
+      if (Object.keys(errors).length > 0) {
         throw {
-          status: response.status,
-          message: data.message || 'Request failed',
-          errors: data.data || {}
+          status: 400,
+          message: "Validation failed",
+          errors,
         };
       }
 
-      return data;
-    } catch (error) {
-      if (error.status) {
+      // ✅ Match your Supabase table columns
+      const payload = {
+        name: validatedData.name,
+        phone: validatedData.phone,
+        age: validatedData.age,
+        city: validatedData.city,
+        condition: validatedData.disease, // must match your DB column name
+      };
+
+      // ✅ Insert into Supabase
+      const { data, error } = await supabase
+        .from("Surgiheal_appointments")
+        .insert([payload])
+        .select();
+
+      if (error) {
+        console.error("[consultationService] Insert error:", error);
         throw error;
       }
+
+      return {
+        success: true,
+        message: "Consultation booked successfully!",
+        data,
+      };
+    } catch (error) {
+      console.error("[consultationService] API error:", error);
+
+      if (error.status) throw error;
+
       throw {
         status: 500,
-        message: 'Network error. Please check your connection.',
-        errors: {}
+        message: error.message || "Something went wrong with Supabase insert.",
+        errors: {},
       };
     }
-  }
+  },
 };
