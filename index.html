@@ -1,17 +1,60 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="icon" type="image/svg+xml" href="/title.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
+
+    <!-- ✅ Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://maps.googleapis.com;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://maps.googleapis.com;
+      font-src 'self' https://fonts.gstatic.com;
+      img-src 'self' data: https:;
+  connect-src 'self' https://api.surgiheal.com https://xrymnoyztkbgyyvecqht.supabase.co https://rffmheuvpwpxysnukftn.supabase.co https://*.supabase.co wss://xrymnoyztkbgyyvecqht.supabase.co wss://rffmheuvpwpxysnukftn.supabase.co wss://*.supabase.co http://localhost:8080 http://127.0.0.1:8080 https://maps.googleapis.com https://maps.gstatic.com;
+      frame-src 'self' https://www.youtube.com https://youtube.com https://youtu.be https://www.google.com https://maps.googleapis.com;
+      child-src 'self' https://www.youtube.com https://youtube.com https://youtu.be https://www.google.com https://maps.googleapis.com;
+      base-uri 'self';
+      form-action 'self';
+    " />
+
+    <!-- CSRF Token (replace with actual token from server) -->
+    <meta name="csrf-token" content="your-csrf-token-here" />
+
     <title>SurgiHeal - Advanced Surgical Care</title>
-    <script type="module" crossorigin src="/assets/index-BWWfxTkC.js"></script>
-    <link rel="modulepreload" crossorigin href="/assets/vendor-C-Dt1pBA.js">
-    <link rel="modulepreload" crossorigin href="/assets/ui-CckxT14R.js">
-    <link rel="modulepreload" crossorigin href="/assets/services-CfkDZ_GK.js">
-    <link rel="stylesheet" crossorigin href="/assets/index-CHK0a3tf.css">
+    <meta name="description" content="SurgiHeal provides advanced surgical care with experienced doctors and state-of-the-art facilities." />
+    <meta name="keywords" content="surgery, medical care, doctors, healthcare, surgical procedures" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+    <script type="module" crossorigin src="/assets/index-DE8NsBqH.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/vendor-Cc7wcGMw.js">
+    <link rel="modulepreload" crossorigin href="/assets/ui-B_cSuroK.js">
+    <link rel="modulepreload" crossorigin href="/assets/services-bFq8Mifw.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-Cgc40iuD.css">
   </head>
   <body>
     <div id="root"></div>
+    
+    <!-- Security: Disable right-click context menu in production -->
+    <script>
+      if (window.location.hostname !== 'localhost') {
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('keydown', e => {
+          if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+            e.preventDefault();
+          }
+        });
+      }
+    </script>
   </body>
 </html>
